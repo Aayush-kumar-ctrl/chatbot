@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugandh Incense Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            width: 300px;
+            height: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-box {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            height: 300px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .input-box {
+            display: flex;
+            padding: 10px;
+        }
+        .input-box input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .input-box button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-box button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            max-width: 70%;
+        }
+        .user-msg {
+            background-color: #cfe9d1;
+            align-self: flex-end;
+        }
+        .bot-msg {
+            background-color: #e6f7ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            <div class="message bot-msg">🌸 Welcome to Sugandh Incense Chatbot 🌸</div>
+            <div class="message bot-msg">Ask your query or type 'exit' to end:</div>
+        </div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value;
+            if (userInput.trim() === "") return;
+
+            // Display user's message
+            let chatBox = document.getElementById("chat-box");
+            let userMsg = document.createElement("div");
+            userMsg.classList.add("message", "user-msg");
+            userMsg.textContent = userInput;
+            chatBox.appendChild(userMsg);
+
+            // Bot's response
+            let botResponse = getBotResponse(userInput.toLowerCase());
+            let botMsg = document.createElement("div");
+            botMsg.classList.add("message", "bot-msg");
+            botMsg.textContent = botResponse;
+            chatBox.appendChild(botMsg);
+
+            // Scroll to the bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Clear input field
+            document.getElementById("user-input").value = "";
+        }
+
+        function getBotResponse(query) {
+            if (query.includes("price")) return "Our incense sticks start from ₹30 per pack. Bulk prices available.";
+            if (query.includes("working hours") || query.includes("open")) return "We are open Monday to Saturday from 9:00 AM to 6:00 PM.";
+            if (query.includes("location") || query.includes("shop")) return "Our manufacturing unit is in Gurugram, Haryana.";
+            if (query.includes("contact") || query.includes("call")) return "You can contact us at 1800-11-AGARBATTI or email care@sugandh.com";
+            if (query.includes("wholesale") || query.includes("bulk")) return "Yes, we supply in bulk. Please call or email us for bulk orders.";
+            if (query.includes("payment")) return "We accept UPI, Paytm, PhonePe, and COD (within city limits).";
+            if (query.includes("delivery")) return "We deliver within 2–4 days across India. Free shipping on orders ₹499+.";
+            if (query.includes("return") || query.includes("refund")) return "Yes, we offer 7-day return policy if the product is unused.";
+            if (query.includes("fragrance") || query.includes("scents")) return "We offer Rose, Sandalwood, Lavender, Mogra, and Custom Blends.";
+            if (query.includes("customize") || query.includes("custom")) return "Yes, we offer custom fragrance options for bulk orders.";
+            if (query.includes("natural")) return "Our incense sticks are made from 100% natural ingredients.";
+            if (query.includes("handmade")) return "Yes, our sticks are handmade by local artisans.";
+            if (query.includes("certified")) return "Yes, our products are ISO-certified and eco-friendly.";
+            if (query.includes("sample")) return "We provide sample packs at ₹20. Free sample on orders above ₹300.";
+            if (query.includes("discount") || query.includes("offer")) return "Currently, get 10% off on your first order. Use code: FIRST10";
+            if (query.includes("gift") || query.includes("festival")) return "We offer festival gift packs with personalized messages.";
+            if (query.includes("safety") || query.includes("harmful")) return "Our sticks are free from toxic chemicals and safe for daily use.";
+            if (query.includes("uses") || query.includes("benefits")) return "They’re used for meditation, puja, relaxation, and ambiance.";
+            if (query.includes("subscribe") || query.includes("monthly")) return "Yes, we offer monthly incense packs with doorstep delivery.";
+            if (query.includes("international") || query.includes("abroad")) return "Yes, we export worldwide. Contact us for details.";
+            return "Sorry, I didn’t understand that. Please ask another question.";
+        }
+    </script>
+
+</body>
+</html>
