@@ -20,7 +20,7 @@ body {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
-    height: 300px;
+    height: 350px;
     border-bottom: 2px solid #f0f0f0;
 }
 
@@ -64,3 +64,4 @@ body {
 .bot-msg {
     background-color: #e6f7ff;
 }
+
